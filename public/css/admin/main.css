@@ -1,0 +1,12 @@
+.grid-row{
+    display: grid;
+    grid-template-columns: 70px 2fr 120px 400px 100px;
+    gap: 7px;
+    margin-bottom: 3px;
+}
+.profileRow{
+    background: #0d6efd10;
+}
+.profileRow:nth-child(2n+1){
+    background: #0d6efd05;
+}
