@@ -78,7 +78,7 @@ class ProfilesController extends BaseController
                 return redirect()->to(base_url("/admin/profiles/edit/".$form->id));
         }
         if($form->op=="add") $this->model->ProfilesAdd($form);
-        if($form->op=="edit") $this->model->ExamSubjectsChange($form);
+        if($form->op=="edit") $this->model->ProfilesChange($form);
         return redirect()->to(base_url("/admin/profiles/"));
     }
 

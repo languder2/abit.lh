@@ -148,11 +148,3 @@
         </div>
     </form>
 </div>
-<pre>
-<?php
-    print_r(@$form);
-
-
-?>
-
-
