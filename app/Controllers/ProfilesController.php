@@ -12,7 +12,7 @@ class ProfilesController extends BaseController
         if(!$this->model->hasAuth()) return redirect()->to(base_url(ADMIN));
         $page['data']['includes']=(object)[
             'js'=>[],
-            'css'=>[],
+            'css'=>["/css/admin/profiles.css"],
         ];
         $page['data']["title"]= "Control Panel: Профили обучения";
         $page['data']['mainMenu']= view("admin/template/mainMenu",["menu"=>$this->model->getMenu("admin")]);
@@ -21,67 +21,68 @@ class ProfilesController extends BaseController
         $page['data']['edForms']= $this->model->getEdFormList();
         $page['data']['edFormsKeys']= array_keys($page['data']['edForms']);
         $page['data']['edProfiles']= $this->model->getEdProfileList();
+        if($this->session->has("message"))
+            $page['data']['message']= $this->session->getFlashdata("message");
+
         $page['pageContent']= view("admin/Profiles/ListView",$page['data']);
         return $modal?$page['pageContent']:view(ADMIN."/template/page",$page);
     }
-
-    /*
-    public function changeStatus():bool|string{
-        $req= $this->request->getVar();
-        $this->model->appsChangeStatus($req);
-        return false;
-    }
-    public function setFilter():RedirectResponse{
+    public function form($op= "add",$pID= false,$modal= false):string|RedirectResponse{
         if(!$this->model->hasAuth()) return redirect()->to(base_url(ADMIN));
-        $form= $this->request->getVar("filter");
-        $this->session->set("appsFilter",$form);
-        return redirect()->to(base_url(ADMIN."/apps/modal"));
-    }
-    public function detail($aid= false,$modal=false):string|RedirectResponse{
-        if(!$this->model->hasAuth()) return redirect()->to(base_url(ADMIN));
-        $data['includes']=(object)[
-            'js'=>[
-                "js/admin/appDetail.js",
-            ],
-            'css'=>[],
+        if($op!=="add" && $pID===false) return redirect()->to(base_url("/admin/profiles/"));
+        $page['data']['includes']=(object)[
+            'js'=>[],
+            'css'=>["/css/admin/profiles.css"],
         ];
-        if(!$modal){
-            $data["title"]= "Control Panel: Заяка #$aid";
-            $data['mainMenu']= view("admin/mainMenu",["menu4MainMenu"=>$this->model->getMenu("admin")]);
+        $page['data']["title"] = "Профиль обучения: ".(($op=="add")?"Создать":": Редактирование");
+        $page['data']['mainMenu']= view("admin/template/mainMenu",["menu"=>$this->model->getMenu("admin")]);
+        $page['data']['op']= $op;
+        $page['data']['pID']= $pID;
+        $page['data']['edTypes']= $this->model->getEdTypeList();
+        $page['data']['edLevels']= $this->model->getEdLevelList();
+        $page['data']['examSubjects']= $this->model->getExamSubjects();
+        $page['data']['edForms']= $this->model->getEdFormList();
+        $page['data']['edFormsKeys']= array_keys($page['data']['edForms']);
+        if($this->session->has("form")){
+            $page['data']['form']= (object)$this->session->getFlashdata("form");
+            $page['data']['validator']= $this->session->getFlashdata("validator");
+            $page['data']['errors'] = $this->model->getFormErrors($page['data']['validator']);
         }
-        $data['statuses']= $this->model->getStatuses();
-        if($this->session->has("message"))
-            $data['message']= $this->session->getFlashdata("message");
-        $data['appDetail']= $this->model->getAppByID($aid);
-        if(!$data['appDetail'])
-            return redirect()->to(base_url(ADMIN_MAIN_PAGE));
-        $data['appDetail']->tabComments= view(ADMIN."/AppDetail/tabCommentsView",$data);
-        $data['appDetail']->tabPresonal= view(ADMIN."/AppDetail/tabPersonalView",$data);
-        $data['appDetail']->tabDuplicates= view(ADMIN."/AppDetail/tabDuplicatesView",$data);
-        $data['appDetail']->tabNotifications= $this->model->getNotificationsByApp($data['appDetail']->appID);
-        $data['pageContent']= view("admin/AppDetail/templateView",$data);
+        elseif($op=="edit")
+            $page['data']['form']= $this->model->getEdProfile($pID);
+        $page['pageContent']= view("admin/Profiles/FormView",$page['data']);
+        return $modal?$page['pageContent']:view(ADMIN."/template/page",$page);
+    }
 
-        return $modal?$data['pageContent']:view(ADMIN."/templateView",$data);
-    }
-    public function addComment():string|RedirectResponse{
+    public function formProcessing(){
         if(!$this->model->hasAuth()) return redirect()->to(base_url(ADMIN));
-        $req= $this->request->getVar('form');
-        $this->model->addComment2App($req);
-        $data['appDetail']= $this->model->getAppByID($req['appID']);
-        return $data['appDetail']->tabComments= view(ADMIN."/AppDetail/tabCommentsView",$data);
+        $form= (object)$this->request->getVar('form');
+        $rules= [
+            'form.code' => 'required|is_unique[edProfiles.code]',
+            'form.name' => 'required',
+        ];
+        if($form->op=="edit") $rules['form.code']= "required|is_unique[edProfiles.code, id, ".$form->id."]";
+        $messages= [
+            'form.code'=>[
+                "required"=>"required",
+                "is_unique"=>"Профиль с кодом $form->code уже существует"
+            ],
+        ];
+        $inputs = $this->validate($rules,$messages);
+        if (!$inputs) {
+            $this->session->setFlashdata("form",$this->request->getVar('form'));
+            $this->session->setFlashdata("validator",$this->validator);
+            if($form->op=="add")
+                return redirect()->to(base_url("/admin/profiles/add"));
+            else
+                return redirect()->to(base_url("/admin/profiles/edit/".$form->id));
+        }
+        if($form->op=="add") $this->model->ProfilesAdd($form);
+        if($form->op=="edit") $this->model->ExamSubjectsChange($form);
+        return redirect()->to(base_url("/admin/profiles/"));
     }
-    public function removeComment($appID,$key):string|RedirectResponse{
-        if(!$this->model->hasAuth()) return redirect()->to(base_url(ADMIN));
-        $this->model->removeCommentByApp($appID,$key);
-        $data['appDetail']= $this->model->getAppByID($appID);
-        return $data['appDetail']->tabComments= view(ADMIN."/AppDetail/tabCommentsView",$data);
-    }
-    public function changeApp():bool|string{
-        if(!$this->model->hasAuth()) return false;
-        $req= $this->request->getVar("form");
-        $this->model->changeApp($req);
-        return false;
-    }
-    */
+
+
+
 
 }

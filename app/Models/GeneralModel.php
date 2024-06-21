@@ -59,6 +59,13 @@ class GeneralModel extends UserModel{
         dd([1,2]);
     }
 
+    public function getExamSubjects():array{
+        $q= $this->db->table("examSubjects")->orderBy("name")->get();
+        $results= [];
+        foreach($q->getResult() as $record)
+            $results[$record->id]= $record;
+        return $results;
+    }
     public function getEdLevelList():array{
         $q= $this->db->table("edLevels")->orderBy("sort")->get();
         $results= [];
@@ -88,9 +95,22 @@ class GeneralModel extends UserModel{
             $record->prices= json_decode($record->prices);
             $record->forms= json_decode($record->forms);
             $record->duration= json_decode($record->duration);
+            $record->exams= json_decode($record->exams);
             $results[$record->id]= $record;
         }
         return $results;
+    }
+    public function getEdProfile($id= false):bool|object{
+        if(!$id) return false;
+        $q= $this->db->table("edProfiles")->where(["id"=>$id])->get();
+        if(!$q->getNumRows()) return false;
+        $record= $q->getFirstRow();
+        $record->places= json_decode($record->places);
+        $record->prices= json_decode($record->prices);
+        $record->forms= json_decode($record->forms);
+        $record->duration= json_decode($record->duration);
+        $record->exams= json_decode($record->exams);
+        return $record;
     }
     public function getExamSubjectsList(){
         $q= $this->db->table("examSubjects")->get();
@@ -98,7 +118,12 @@ class GeneralModel extends UserModel{
         foreach($q->getResult() as $record)
             $results[$record->id]= $record;
         return $results;
-
+    }
+    public function getExamSubject($esID= false):bool|object{
+        if(!$esID) return false;
+        $q= $this->db->table("examSubjects")->where(["id"=>$esID])->get();
+        if(!$q->getNumRows()) return false;
+        return $q->getFirstRow();
     }
 
 

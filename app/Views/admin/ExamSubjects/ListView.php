@@ -9,9 +9,21 @@
             </a>
         </div>
     </div>
+    <?php if(isset($message) and !empty($message)):?>
+        <div class="mb-3 callout <?=$message->class?>">
+            <?=$message->message?>
+        </div>
+    <?php endif; ?>
     <div class="examSubjects-grid">
         <?php if(!empty($examSubjects)) foreach ($examSubjects as $exam):?>
             <div>
+                <a
+                    class="linkRemove"
+                    href="<?=base_url("admin/exam-subjects/delete/$exam->id")?>"
+                    data-title="Удалить экзаменационный предмет"
+                    data-message="Удалить #<?=$exam->id?> <?=$exam->name?>"
+                >del</a>
+                <a href="<?=base_url("admin/exam-subjects/edit/$exam->id")?>">edit</a>
             </div>
             <div>
                 <?=$exam->name?>
@@ -19,4 +31,3 @@
         <?php endforeach;?>
     </div>
 </div>
-

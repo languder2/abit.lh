@@ -1,12 +1,12 @@
-.grid-row{
-    display: grid;
-    grid-template-columns: 70px 2fr 120px 400px 100px;
-    gap: 7px;
-    margin-bottom: 3px;
+.callout{
+    padding: 1rem;
+    border: 1px solid #e9ecef;
+    border-left-width: 0.25rem;
+    border-radius: 0.25rem;
 }
-.profileRow{
-    background: #0d6efd10;
+.callout-success{
+    border-left-color: #198754;
 }
-.profileRow:nth-child(2n+1){
-    background: #0d6efd05;
+.callout-error{
+    border-left-color: #dc3545;
 }

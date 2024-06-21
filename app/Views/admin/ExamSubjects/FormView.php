@@ -1,7 +1,7 @@
 <div class="w-50 mx-auto">
     <form action="/admin/exam-subjects/form-processing" method="post">
         <input type="hidden" name="form[op]" value="<?=$op??"add"?>">
-        <input type="hidden" name="form[esID]" value="<?=$es->id??""?>">
+        <input type="hidden" name="form[id]" value="<?=$esID??""?>">
         <h3 class="mt-2 mb-3 text-center">
             <?php if($op=="add"):?>
                 Добавить предмет
@@ -30,3 +30,5 @@
         </div>
     </form>
 </div>
+
+
