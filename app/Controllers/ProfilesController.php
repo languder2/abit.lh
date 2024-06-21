@@ -27,7 +27,8 @@ class ProfilesController extends BaseController
 
     /*
     public function changeStatus():bool|string{
-        $req= $this->request->getVar();        $this->model->appsChangeStatus($req);
+        $req= $this->request->getVar();
+        $this->model->appsChangeStatus($req);
         return false;
     }
     public function setFilter():RedirectResponse{
