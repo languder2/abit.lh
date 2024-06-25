@@ -14,6 +14,7 @@
             <?=$message->message?>
         </div>
     <?php endif; ?>
+    <?=$filter??""?>
     <div class="grid-row py-2 text-center fw-bold ">
         <div>Код</div>
         <div>Наименование</div>
@@ -71,22 +72,23 @@
                     </div>
                 </div>
             </div>
-            <div>
-                <a href="<?=base_url("admin/profiles/edit/$profile->id")?>">edit</a>
-                <br>
-                <a href="#">delete</a>
-                <br>
-                <a href="#">on</a>
-                <br>
-                <a href="#">off</a>
-
+            <div class="align-content-center">
+                <a class="btn btn-primary btn-sm" href="<?=base_url("admin/profiles/edit/$profile->id")?>">edit</a>
+                <a
+                        class="linkRemove btn btn-danger btn-sm"
+                        href="<?=base_url("admin/profiles/delete/$profile->id")?>"
+                        data-title="Удалить профиль обучения"
+                        data-message="Удалить #<?=$profile->id?> <?=$profile->name?>"
+                >
+                    del
+                </a>
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input float-none changeVisible" data-link="/admin/profiles/change-visible" type="checkbox" id="changeVisible-Profile<?=$profile->id?>" data-id="<?=$profile->id?>" <?=$profile->display?"checked":""?>>
+                </div>
             </div>
         </div>
     <?php endforeach;?>
 </div>
-
-
-
 
 <?php
 //if(isset($edProfiles)) dd($edProfiles);

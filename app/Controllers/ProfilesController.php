@@ -20,6 +20,9 @@ class ProfilesController extends BaseController
         $page['data']['edLevels']= $this->model->getEdLevelList();
         $page['data']['edForms']= $this->model->getEdFormList();
         $page['data']['edFormsKeys']= array_keys($page['data']['edForms']);
+
+        $page['data']['filter']= view("admin/profiles/FilterSection",$page['data']);
+
         $page['data']['edProfiles']= $this->model->getEdProfileList();
         if($this->session->has("message"))
             $page['data']['message']= $this->session->getFlashdata("message");
@@ -49,8 +52,8 @@ class ProfilesController extends BaseController
             $page['data']['errors'] = $this->model->getFormErrors($page['data']['validator']);
         }
         elseif($op=="edit")
-            $page['data']['form']= $this->model->getEdProfile($pID);
-        $page['pageContent']= view("admin/Profiles/FormView",$page['data']);
+            $page['data']['form']= $this->model->dbGetRow("edProfiles",["id"=>$pID],['forms','prices',"duration","places","exams"]);
+            $page['pageContent']= view("admin/Profiles/FormView",$page['data']);
         return $modal?$page['pageContent']:view(ADMIN."/template/page",$page);
     }
 
@@ -70,7 +73,8 @@ class ProfilesController extends BaseController
         ];
         $inputs = $this->validate($rules,$messages);
         if (!$inputs) {
-            $this->session->setFlashdata("form",$this->request->getVar('form'));
+            $form= json_decode(json_encode($form), FALSE);
+            $this->session->setFlashdata("form",$form);
             $this->session->setFlashdata("validator",$this->validator);
             if($form->op=="add")
                 return redirect()->to(base_url("/admin/profiles/add"));
@@ -82,6 +86,20 @@ class ProfilesController extends BaseController
         return redirect()->to(base_url("/admin/profiles/"));
     }
 
+    public function delete($id= false){
+        if(!$this->model->hasAuth()) return redirect()->to(base_url(ADMIN));
+        if(!$id) return redirect()->to(base_url("/admin/profiles/"));
+        $profile= $this->model->dbGetRow("edProfiles",["id"=>$id]);
+        $this->session->setFlashdata("message",(object)["type"=>"success","class"=>"callout-success","message"=>"Профиль удален: #$profile->id: $profile->code $profile->name"]);
+        $this->model->dbDelete("edProfiles",["id"=>$id]);
+        return redirect()->to(base_url("/admin/profiles/"));
+    }
+    public function changeVisible():string|bool{
+        if(!$this->model->hasAuth()) return json_encode(['message'=>"success denied"]);
+        $form= $this->request->getVar();
+        $this->model->dbUpdateFiled("edProfiles",["display"=>(string)$form->display],["id"=>$form->id]);
+die();
+    }
 
 
 

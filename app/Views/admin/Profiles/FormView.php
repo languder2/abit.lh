@@ -39,13 +39,12 @@
                     <?php endforeach;?>
                 </select>
             </div>
-            <div class="form-floating my-2 px-1">
-                <input type="text" name="form[type]" placeholder="" value="<?=$form->type??"Направление подготовки"?>" required class="
-                    form-control h-auto
-                    <?=(isset($validator) && !empty($validator->getError("form.type")))?"is-invalid":""?>
-                "
-                >
-                <label class="h-auto w-auto">Наименование профиля</label>
+            <div class="my-2 px-1">
+                <select class="form-select" name="form[type]" required>
+                    <?php if(!empty($edTypes)) foreach($edTypes as $code=>$type):?>
+                        <option <?=(!empty($form->type) && $form->type==$code)?"selected":""?> value="<?=$code?>"><?=$type->name?></option>
+                    <?php endforeach;?>
+                </select>
             </div>
             <div class="w-100 my-2 px-1">
                 <div class="container-fluid text-center">

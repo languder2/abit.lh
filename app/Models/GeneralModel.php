@@ -2,13 +2,12 @@
 namespace App\Models;
 use CodeIgniter\Database\ConnectionInterface;
 use CodeIgniter\Validation\ValidationInterface;
-class GeneralModel extends UserModel{
+class GeneralModel extends FeedBackModel {
     public function __construct(?ConnectionInterface $db = null, ?ValidationInterface $validation = null)
     {
         parent::__construct($db, $validation);
     }
-    public function getFlashdata($arg):array|object|string
-    {
+    public function getFlashdata($arg):array|object|string{
         return $this->session->getFlashdata($arg);
     }
     public function getMenu($section= "public",$parent= 0){
@@ -125,6 +124,52 @@ class GeneralModel extends UserModel{
         if(!$q->getNumRows()) return false;
         return $q->getFirstRow();
     }
+    public function dbDelete($table= false,$where= false):bool{
+        if($table === false or $where === false) return false;
+        $this->db->table($table)->delete($where);
+        return true;
+    }
+    public function dbGetList($table= false,$assoc= false,$where= false, $jArr= [],$sort= false):bool|array{
+        if($table === false) return false;
+        $q= $this->db->table($table);
+        if($where)
+            $q= $q->where($where);
+        if($sort)
+            $q= $q->orderBy($sort);
+        $q= $q->get();
+        if(!$q->getNumRows()) return false;
+        $results= $q->getResult();
+        if(!empty($jArr))
+            foreach ($results as $key=>$result)
+                self::rowJsonDecode($results[$key],$jArr);
+        if($assoc){
+            $tmp= [];
+            foreach ($results as $key=>$result){
+                $tmp[$result->{$assoc}]= $result;
+            }
+        }
+        return $assoc?$tmp:$results;
+    }
+    public function dbGetRow($table= false,$where= false, $jArr= []):bool|object|NULL{
+        if($table === false or $where === false) return false;
+        $q= $this->db->table($table)->where($where)->get();
+        if(!$q->getNumRows()) return false;
+        $q= $q->getFirstRow();
+        self::rowJsonDecode($q,$jArr);
+        return $q;
+    }
 
+    function rowJsonDecode(&$row,$jArr):bool{
+        if(!is_object($row) or count($jArr) === 0) return false;
+        foreach ($jArr as $field)
+            if(!empty($row->{$field}))
+                $row->{$field}= json_decode($row->{$field});
+        return true;
+    }
+
+    function dbUpdateFiled($table,$field,$where):bool{
+        $this->db->table($table)->update($field,$where);
+        return true;
+    }
 
 }
