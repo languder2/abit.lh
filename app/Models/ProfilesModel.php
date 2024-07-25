@@ -54,4 +54,59 @@ class ProfilesModel extends ExamSubjectsModel{
         return true;
     }
 
+    function prepareExamList(&$profile,$exams):bool
+    {
+        $result= (object)["required"=>[],"variable"=>[]];
+        if($profile->exams)
+            foreach ($profile->exams as $key=>$exam){
+                if(isset($exam->required) && isset($exams[$key]))
+                    $result->required[$exams[$key]->name]= $exam->score;
+                if(isset($exam->variable) && isset($exams[$key]))
+                    $result->variable[$exams[$key]->name]= $exam->score;
+            }
+        $profile->exams= $result;
+        return true;
+    }
+
+    public function getProfileCards($table= false,$assoc= false,$where= false, $jArr= [],$sort= false):bool|array{
+        $exams= self::dbGetList("examSubjects","id",false,false,false);
+        $profiles= self::dbGetList($table,$assoc,$where, $jArr,$sort);
+        $types= self::dbGetList("edTypes","id");
+        $formByDefault= self::dbGetRow("edForms",["byDefault"=>1])->code;
+        if(count($profiles))
+            foreach ($profiles as $key=>$profile){
+                self::prepareExamList($profile,$exams);
+                $profiles[$key]= view("public/profiles/card",[
+                    "profile"=>$profile,
+                    "types"=>$types,
+                    "formByDefault"=>$formByDefault,
+                ]);
+            }
+        return $profiles;
+    }
+
+    public function updateProfileForms($table= false,$assoc= false,$where= false, $jArr= [],$sort= false){
+        $forms= self::dbGetList("edForms","code",false,false,"sort");
+        $formByDefault= self::dbGetRow("edForms",["byDefault"=>1])->code;
+        $profiles= self::dbGetList($table,$assoc,$where, $jArr,$sort);
+        foreach ($profiles as $profile){
+            $pForm= (object)[];
+            foreach ($forms as $form=>$rec)
+                if(
+                    $profile->places->budget->{$form} or
+                    $profile->places->contract->{$form} or
+                    $profile->prices->{$form}
+                )
+                    $pForm->{$form}= 1;
+                else
+                    $pForm->{$form}= 0;
+            self::dbUpdateFiled(
+                "edProfiles",
+                ["forms"=>json_encode($pForm)],
+                ["id"=>$profile->id]
+            );
+        }
+    }
+
+
 }

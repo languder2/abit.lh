@@ -14,6 +14,7 @@
             <?=$message->message?>
         </div>
     <?php endif; ?>
+    <?=$filterSection??""?>
     <div class="grid-row py-2 text-center fw-bold ">
         <div>Код</div>
         <div>Наименование</div>
@@ -25,7 +26,7 @@
                 <div class="row">
                     <div class="col-3"></div>
                     <?php if(isset($edForms)) foreach ($edForms as $form):?>
-                        <div class="col-3"><?=$form->code?></div>
+                        <div class="col-3"><?=empty($form->short)?$form->name:$form->short?></div>
                     <?php endforeach;?>
                 </div>
             </div>
@@ -47,46 +48,53 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-3 text-end">Срок</div>
-                        <?php if(isset($edFormsKeys)) foreach ($edFormsKeys as $form):?>
-                            <div class="col-3"><?=$profile->duration->{$form}?></div>
+                        <?php if(isset($edForms)) foreach ($edForms as $formCode=>$form):?>
+                            <div class="col-3"><?=$profile->duration->{$formCode}?></div>
                         <?php endforeach;?>
                     </div>
                     <div class="row">
                         <div class="col-3 text-end">Цена</div>
-                        <?php if(isset($edFormsKeys)) foreach ($edFormsKeys as $form):?>
-                            <div class="col-3"><?=empty($profile->prices->{$form})?"-":$profile->prices->{$form}?></div>
+                        <?php if(isset($edForms)) foreach ($edForms as $formCode=>$form):?>
+                            <div class="col-3"><?=empty($profile->prices->{$formCode})?"-":$profile->prices->{$formCode}?></div>
                         <?php endforeach;?>
                     </div>
                     <div class="row">
                         <div class="col-3 text-end">Бюджет</div>
-                        <?php if(isset($edFormsKeys)) foreach ($edFormsKeys as $form):?>
-                            <div class="col-3"><?=empty($profile->places->budget->{$form})?"-":$profile->places->budget->{$form}?></div>
+                        <?php if(isset($edForms)) foreach ($edForms as $formCode=>$form):?>
+                            <div class="col-3"><?=empty($profile->places->budget->{$formCode})?"-":$profile->places->budget->{$formCode}?></div>
                         <?php endforeach;?>
                     </div>
                     <div class="row">
-                        <div class="col-3 text-end">Контракт</div>
-                        <?php if(isset($edFormsKeys)) foreach ($edFormsKeys as $form):?>
-                            <div class="col-3"><?=empty($profile->places->contract->{$form})?"-":$profile->places->contract->{$form}?></div>
+                        <div class="col-3 text-end">Контракт 11</div>
+                        <?php if(isset($edForms)) foreach ($edForms as $formCode=>$form):?>
+                            <div class="col-3"><?=empty($profile->places->contract->{$formCode})?"-":$profile->places->contract->{$formCode}?></div>
+                        <?php endforeach;?>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 text-end">Контракт 9</div>
+                        <?php if(isset($edForms)) foreach ($edForms as $formCode=>$form):?>
+                            <div class="col-3"><?=empty($profile->places->contract9->{$formCode})?"-":$profile->places->contract9->{$formCode}?></div>
                         <?php endforeach;?>
                     </div>
                 </div>
             </div>
-            <div>
-                <a href="<?=base_url("admin/profiles/edit/$profile->id")?>">edit</a>
-                <br>
-                <a href="#">delete</a>
-                <br>
-                <a href="#">on</a>
-                <br>
-                <a href="#">off</a>
-
+            <div class="align-content-center">
+                <a class="btn btn-primary btn-sm" href="<?=base_url("admin/profiles/edit/$profile->id")?>">edit</a>
+                <a
+                        class="linkRemove btn btn-danger btn-sm"
+                        href="<?=base_url("admin/profiles/delete/$profile->id")?>"
+                        data-title="Удалить профиль обучения"
+                        data-message="Удалить #<?=$profile->id?> <?=$profile->name?>"
+                >
+                    del
+                </a>
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input float-none changeVisible" data-link="/admin/profiles/change-visible" type="checkbox" id="changeVisible-Profile<?=$profile->id?>" data-id="<?=$profile->id?>" <?=$profile->display?"checked":""?>>
+                </div>
             </div>
         </div>
     <?php endforeach;?>
 </div>
-
-
-
 
 <?php
 //if(isset($edProfiles)) dd($edProfiles);

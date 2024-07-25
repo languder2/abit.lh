@@ -39,20 +39,21 @@
                     <?php endforeach;?>
                 </select>
             </div>
-            <div class="form-floating my-2 px-1">
-                <input type="text" name="form[type]" placeholder="" value="<?=$form->type??"Направление подготовки"?>" required class="
-                    form-control h-auto
-                    <?=(isset($validator) && !empty($validator->getError("form.type")))?"is-invalid":""?>
-                "
-                >
-                <label class="h-auto w-auto">Наименование профиля</label>
+            <div class="my-2 px-1">
+                <select class="form-select" name="form[type]" required>
+                    <?php if(!empty($edTypes)) foreach($edTypes as $code=>$type):?>
+                        <option <?=(!empty($form->type) && $form->type==$code)?"selected":""?> value="<?=$code?>"><?=$type->name?></option>
+                    <?php endforeach;?>
+                </select>
             </div>
             <div class="w-100 my-2 px-1">
                 <div class="container-fluid text-center">
                     <div class="row">
                         <div class="col-3 text-center"></div>
-                        <?php if(isset($edFormsKeys)) foreach ($edFormsKeys as $fKey):?>
-                            <div class="col-3"><?=$fKey?></div>
+                        <?php if(isset($edForms)) foreach ($edForms as $edForm):?>
+                            <div class="col-3">
+                                <?=empty($edForm->short)?$edForm->name:$edForm->short?>
+                            </div>
                         <?php endforeach;?>
                     </div>
                     <div class="row py-1">
@@ -98,10 +99,18 @@
                         <?php endforeach;?>
                     </div>
                     <div class="row align-items-center py-1">
-                        <div class="col-3 text-end">Контракт</div>
+                        <div class="col-3 text-end">Контракт 11</div>
                         <?php if(isset($edFormsKeys)) foreach ($edFormsKeys as $fKey):?>
                             <div class="col-3">
                                 <input class="form-control" type="text" name="form[places][contract][<?=$fKey?>]" value="<?=$form->places->contract->{$fKey}??""?>">
+                            </div>
+                        <?php endforeach;?>
+                    </div>
+                    <div class="row align-items-center py-1">
+                        <div class="col-3 text-end">Контракт 9</div>
+                        <?php if(isset($edFormsKeys)) foreach ($edFormsKeys as $fKey):?>
+                            <div class="col-3">
+                                <input class="form-control" type="text" name="form[places][contract9][<?=$fKey?>]" value="<?=$form->places->contract9->{$fKey}??""?>">
                             </div>
                         <?php endforeach;?>
                     </div>

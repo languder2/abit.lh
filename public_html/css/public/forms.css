@@ -1,0 +1,48 @@
+/* s BOX */
+.s-input-group{
+    position: relative;
+    padding: 1rem;
+}
+.s-input-group input{
+    border-width: 2px;
+}
+
+.s-input-group label{
+    position:           absolute;
+    top:                1.5rem;
+    left:               21px;
+    background-color:   white;
+    padding-left:       10px;
+    z-index:            1000;
+}
+.s-input-group >input:focus{
+    box-shadow:         none;
+    border:             solid 2px #820000;
+    margin:             0;
+    border-radius:      6px;
+}
+.s-input-group:has(>input:not(:placeholder-shown)) label,
+.s-input-group:has(>input:focus) label,
+.s-input-group label.active{
+    transition: 0.3s ease;
+    font-size: 13px;
+    top: 7px;
+    padding: 0 3px;
+    left: 24px
+}
+
+.btn-outline-red{
+    --bs-btn-color:                 #ffffff;
+    --bs-btn-border-color:          #820000;
+    --bs-btn-bg:                    #820000;
+    --bs-btn-hover-color:           #fff;
+    --bs-btn-hover-bg:              #af0000;
+    --bs-btn-hover-border-color:    #820000;
+    --bs-btn-active-color:          #fff;
+    --bs-btn-active-bg:             #bf0000;
+    --bs-btn-active-border-color:   #820000;
+    --bs-btn-disabled-color:        #6c757d;
+    --bs-btn-disabled-bg:           transparent;
+    --bs-btn-disabled-border-color: #6c757d;
+    --bs-gradient:                  none;
+}

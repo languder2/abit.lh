@@ -2,13 +2,12 @@
 namespace App\Models;
 use CodeIgniter\Database\ConnectionInterface;
 use CodeIgniter\Validation\ValidationInterface;
-class GeneralModel extends UserModel{
+class GeneralModel extends FeedBackModel {
     public function __construct(?ConnectionInterface $db = null, ?ValidationInterface $validation = null)
     {
         parent::__construct($db, $validation);
     }
-    public function getFlashdata($arg):array|object|string
-    {
+    public function getFlashdata($arg):array|object|string{
         return $this->session->getFlashdata($arg);
     }
     public function getMenu($section= "public",$parent= 0){
@@ -88,7 +87,23 @@ class GeneralModel extends UserModel{
         return $results;
     }
     public function getEdProfileList():array{
-        $q= $this->db->table("edProfiles")->get();
+        $q= $this->db->table("edProfiles");
+        if($this->session->has("profileFilter")){
+            $where= [];
+            $filter= $this->session->get("profileFilter");
+            if(!empty($filter->code))
+                $where[]= "code like '%$filter->code%'";
+            if(!empty($filter->name))
+                $where[]= "name like '%$filter->name%'";
+            if(!empty($filter->level) && $filter->level!="all")
+                $where[]= "level='$filter->level'";
+            if(isset($filter->display) && $filter->display!="all")
+                $where[]= "display='$filter->display'";
+        }
+        if(!empty($where))
+            $q= $q->where(implode(" AND ",$where));
+
+        $q= $q->get();
         $results= [];
         foreach($q->getResult() as $record){
             $record->places= json_decode($record->places);
@@ -125,6 +140,98 @@ class GeneralModel extends UserModel{
         if(!$q->getNumRows()) return false;
         return $q->getFirstRow();
     }
+    public function dbDelete($table= false,$where= false):bool{
+        if($table === false or $where === false) return false;
+        $this->db->table($table)->delete($where);
+        return true;
+    }
+    public function dbGetList($table= false,$assoc= false,$where= false, $jArr= [],$sort= false):bool|array{
+        if($table === false) return false;
+        $q= $this->db->table($table);
+        if($where)
+            $q= $q->where($where);
+        if($sort)
+            $q= $q->orderBy($sort);
+        $q= $q->get();
+        if(!$q->getNumRows()) return false;
+        $results= $q->getResult();
+        if(!empty($jArr))
+            foreach ($results as $key=>$result)
+                self::rowJsonDecode($results[$key],$jArr);
+        if($assoc){
+            $tmp= [];
+            foreach ($results as $key=>$result){
+                $tmp[$result->{$assoc}]= $result;
+            }
+        }
+        return $assoc?$tmp:$results;
+    }
+    public function getPublications():array{
+        $q= $this->db->table("publications")->get();
+        $results= [];
+        foreach($q->getResult() as $record)
+            $results[$record->id]= $record;
+        return $results;
+    }
+    public function PublicationsAdd($form){
+        $forms= [];
+        $formKeys= array_keys(self::getPublications());
+        foreach ($formKeys as $fKey)
+            $forms[$fKey]= (int)($form->forms[$fKey]??0);
+        $sql=[
+            "tags"=>$form->tags,
+            "name"=>$form->name,
+            "pdf"=>$form->pdf,
+            "fileName"=>$form->pdf,
+        ];
+        $this->db->table("publications")->insert($sql);
+        $this->session->setFlashdata("message",(object)["type"=>"success","class"=>"callout-success","message"=>"Файл добавлен: #".$this->db->insertID().": $form->name"]);
+        return true;
+    }
+    public function PublicationsChange($form){
+        $forms= [];
+        $formKeys= array_keys(self::getPublications());
+        foreach ($formKeys as $fKey)
+            $forms[$fKey]= (int)($form->forms[$fKey]??0);
+        $sql=[
+            "tags"=>$form->tags,
+            "name"=>$form->name,
+            "pdf"=>$form->pdf,
+            "fileName"=>$form->pdf,
+        ];
+        $this->db->table("publications")->update($sql,["id"=>$form->id]);
+        $this->session->setFlashdata("message",(object)["type"=>"success","class"=>"callout-success","message"=>"Файл изменен: #$form->id: $form->name"]);
+        return true;
+    }
+    public function ContentChange($form){
+        $sql= [
+            "title"=> trim($form->title),
+            "content"=> trim($form->content),
+        ];
+        $this->db->table("pages")->update($sql,["id"=>1]);
+        $this->session->setFlashdata("message",(object)["type"=>"success","class"=>"callout-success","message"=>"Контент изменен"]);
+        return true;
+    }
+    public function dbGetRow($table= false,$where= false, $jArr= []):bool|object|NULL{
+        if($table === false or $where === false) return false;
+        $q= $this->db->table($table)->where($where)->get();
+        if(!$q->getNumRows()) return false;
+        $q= $q->getFirstRow();
+        self::rowJsonDecode($q,$jArr);
+        return $q;
+    }
 
+    function rowJsonDecode(&$row,$jArr):bool{
+        if(!is_object($row) or count($jArr) === 0) return false;
+        foreach ($jArr as $field)
+            if(!empty($row->{$field}))
+                $row->{$field}= json_decode($row->{$field});
+        return true;
+    }
+
+    function dbUpdateFiled($table,$field,$where):bool{
+        $this->db->table($table)->update($field,$where);
+        return true;
+    }
 
 }

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="90f4af34-84b8-4c05-ba84-671fa04e45f6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.osp/project.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Controllers/DocumentsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Controllers/FeedBackController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Controllers/PublicPagesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Controllers/Ratings.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/FeedBackModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/admin/Document/FilterSection.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/admin/Document/FormView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/admin/Document/FormViewAdd.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/admin/Document/ListView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/admin/Profiles/FilterSection.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/Ratings/Results.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/contactsPage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/documents.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/indexPage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/infoBlock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/profiles/card.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/profiles/formsMenu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/profiles/levelsMenu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/profiles/section.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/template/YandexMetric.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/template/fb.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/template/menuTop.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/template/page.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/whyMelGUPage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Views/public/whyMelitopolPage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/css/admin/publications.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/css/public/anim-bg.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/css/public/fb.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/css/public/forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/css/public/ratings.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/css/public/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/baza.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/bee.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/cb-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/clr-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/favicon-1.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/full-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/h-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/h-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/icons/pen.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/m-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/m-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/m-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-12(1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/ph-9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/s-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/s-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/s-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/s-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/u-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/univer.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/img/white-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/js/admin/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/js/admin/profiles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/js/lib/imask.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/js/public/edProfiles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/js/public/fb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/js/public/head-scroll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/js/public/ratings.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/js/public/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/Himiya.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/Inostrannyj-yazyk.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/Istoriya.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/Obshestvoznanie.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/biologiya.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/fizika.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/geografiya.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/konsultaciya-biologiya.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/konsultaciya-fizika.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/konsultaciya-geografiya.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/konsultaciya-inostrannyj-yazyk.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/konsultaciya-istoriya.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/konsultaciya-literatura.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/konsultaciya-magistratura-1.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/konsultaciya-magistratura-2.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/konsultaciya-matematika.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/literatura.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/magistratura-1.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/magistratura-2.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/matematika.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public_html/publications/russkij-yazyk.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/abit.lh.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/abit.local.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/App.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Config/Routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Config/Routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/ProfilesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/ProfilesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/GeneralModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/GeneralModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProfilesModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProfilesModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/admin/Profiles/FormView.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/admin/Profiles/FormView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/admin/Profiles/ListView.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/admin/Profiles/ListView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/admin/template/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/admin/template/page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/admin/examSubjects.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/admin/examSubjects.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/admin/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/admin/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/admin/profiles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/admin/profiles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/lib/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/css/lib/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/examSubjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/js/admin/examSubjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/js/lib/bootstrap.bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public_html/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/logs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/logs/log-2024-06-20.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session0io1u2544hl7b3u6odhoal71r7mjdbtf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session1ncnh43m2t9buep9ks9t17ejgleg2141" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session2vlcq5545855gj5eubqvq57b4hhmo5qn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session3s4cs08hvqgu7t9cab9ngm4n8s5fn8oj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session536sn1p0og93s1u3a3umibbvkoo0omfm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session67a8a77h3ghjr585v04l704nngl4bsjv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session6idmjkllcrkqfh7v1ve4odhfgfpjqn84" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session7al5s6qmt4i2oqiv1pphioh3n9f40agp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session83egglp7mmctrn379tthijsda2h62ois" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session87k0he322dknjjooehq2cp7ttfhaqmla" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session88uv21s0lj0b5fp5o9501js6h5lmfoe4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session8s4f6c5pfoeuti2trsib7cn1kbtl6rkc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_session9ipscfrl47focvsb7s528rc92dtupapo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessiona0ufthl528urpc8dfvrsgbnbdpuq4nk2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessiona543mr3f09fak9npfjg0f2iqj413a9j1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessionbu1dogs9d4mmkobps3bu0t4hlsr04geu" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessionc8btc02qb8fu9p2qekrkivo0oqr3rjik" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessioncf4587iv3rqhd8qrce51umv666dn225a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessioncfr0hgissk117vse67502ijoa8njp91l" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessioncj14p889jucq9n87c8qff1ji72sobhm7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessiong1f6f3vi8t6kbrqvncs2nus6uis3rkv8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessiongek36b14um3lku3fopt3mbhked46ibp1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessiongf4omlbpf7fsjl5al08paf6g4k0tuevq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessiongiq2c37gjkl2rofqgloi8g3ofm6p4ms7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessiongllu386kg3m7f04ms4hf7se0h7k7ddqm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessionk8fth00mu0h6v5hasr7rgeqbqd0eutol" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessionlg54p7vc14k03g0c7mv3gdpa8fu866p4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessionlnqlpf8crqhqtn99o8mb3nvom71ef2cl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessionoi77ha8uaoova8flaut8tahj1u7d2v27" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessionon5aq06428h6ou4k764o1ovob782eab8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessionrf9rmb5mor4on415bokp7chmpmin4407" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessionsj6ct79l3emue08ui3tmt707hsjv4aoq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessiont646farsoe41a53f0abik68rpvjdc04m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessiontbkjkl2vlklibrf0vq7re2t91t5nnj5u" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessiontc4o1eud38nol5p3v7jirf3vsv3vfb9n" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessionts9ge0aav4esjtb51bidbalsqd4mqiaf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/writable/session/ci_sessionuncvtohcfrphs3r88db3up0horhvhc39" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="D:\OSPanel\modules\PHP-8.3\PHP\php.exe" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2jhgUw1gNEoHFaMOu3jOc0bxX3k" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/OSPanel/home/abit.local/public_html/js/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\home\abit.local\public_html\js\public" />
+      <recent name="D:\OSPanel\home\abit.local\public_html\css\public" />
+      <recent name="D:\OSPanel\home\abit.local\app\Views\public\template" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PS-241.15989.102" />
+        <option value="bundled-php-predefined-ba97393d7c68-c76157a7178b-com.jetbrains.php.sharedIndexes-PS-241.15989.102" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="90f4af34-84b8-4c05-ba84-671fa04e45f6" name="Changes" comment="" />
+      <created>1721844742300</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1721844742300</updated>
+      <workItem from="1721844744407" duration="1190000" />
+      <workItem from="1721845956920" duration="580000" />
+      <workItem from="1721874889407" duration="2805000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

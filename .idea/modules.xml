@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/abit.lh.iml" filepath="$PROJECT_DIR$/.idea/abit.lh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/abit.local.iml" filepath="$PROJECT_DIR$/.idea/abit.local.iml" />
     </modules>
   </component>
 </project>

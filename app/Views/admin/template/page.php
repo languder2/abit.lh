@@ -22,7 +22,6 @@
 </header>
 <main class="container-lg px-2">
     <?=$pageContent??""?>
-    <?php // dd($data);?>
 </main>
 <footer>
 </footer>
